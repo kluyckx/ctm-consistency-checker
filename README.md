@@ -12,12 +12,13 @@ The script locates all mentions (named 'concepts' in the script) of one of the C
 
 > python checkCTMconsistency.py example.ctm
 
-### Output
+### Sample output
 
-> Checking example.ctm
-> SINGLE mention of concept: group:PT_TestCase_AgeOver18_inclusion_criteria
-> SINGLE mention of concept: cell:PT_TestCase_AgeOver18_adults
-> SINGLE mention of concept: group:PT_TestCase_AgeOver18_inclusion
-> SINGLE mention of concept: cell:PT_TestCase_AgeOver18_adult
-> Done checking
-
+```
+Checking example.ctm
+SINGLE mention of concept: group:PT_TestCase_AgeOver18_inclusion_criteria
+SINGLE mention of concept: cell:PT_TestCase_AgeOver18_adults
+SINGLE mention of concept: group:PT_TestCase_AgeOver18_inclusion
+SINGLE mention of concept: cell:PT_TestCase_AgeOver18_adult
+Done checking
+```
