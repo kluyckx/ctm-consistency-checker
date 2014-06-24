@@ -1,0 +1,51 @@
+%encoding "UTF-8"
+%version 1.0
+
+# reifier of the topicmap
+
+#####################
+# Individual Topics #
+#####################
+trial:PT_TestCase_AgeOver18
+    isa med:clinical_trial;
+    - "PT_TestCase_AgeOver18".
+
+trial:PT_TestCase_AgeOver18_eligibility
+    isa med:clinical_trial_eligibility;
+    - "PT_TestCase_AgeOver18_Eligibility".
+
+institution:institutiona
+    isa med:institution;
+    - "Institution A".
+
+############
+# Concepts #
+############
+demographics:age
+    isa med:demographics_concept;
+    - "age";
+    med:unit: "year".
+
+####################
+# Cell Definitions #
+####################
+cell:PT_TestCase_AgeOver18_adults
+    numeric_cell(institution:institutiona, trial:PT_TestCase_AgeOver18,
+                 "Adult (PT_TestCase_AgeOver18)",
+                 demographics:age, op:gte, 18).
+
+########################
+# Criteria Definitions #
+########################
+group:PT_TestCase_AgeOver18_inclusion_criteria
+    group(institution:institutiona, trial:PT_TestCase_AgeOver18,
+          "Inclusion criteria (PT_TestCase_AgeOver18)",
+          op:and, cell:PT_TestCase_AgeOver18_adult).
+
+group:PT_TestCase_AgeOver18_included
+    group(institution:institutiona, trial:PT_TestCase_AgeOver18,
+          "ELIGIBLE",
+          op:and,	group:PT_TestCase_AgeOver18_inclusion).
+
+contains(institution:institutiona, trial:PT_TestCase_AgeOver18, trial:PT_TestCase_AgeOver18_eligibility, group:PT_TestCase_AgeOver18_included)
+contains(institution:institutiona, trial:PT_TestCase_AgeOver18, trial:PT_TestCase_AgeOver18, trial:PT_TestCase_AgeOver18_eligibility)
